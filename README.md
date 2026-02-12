@@ -27,12 +27,12 @@ This project analyzes high-frequency Bitcoin price and volume data to uncover te
    - Verified dataset size and data types
    - Confirmed no missing values
 2. **Timestamp Conversion**
-   - Converted Unix seconds → datetime for proper time-series handling
+   - Converted Unix seconds - for proper time-series handling
 3. **Visualizations**
-   - Closing price over time → shows trends and regime shifts
-   - Log return distribution → identifies heavy tails and extreme returns
-   - Volume distribution (log scale) → highlights skewness and spikes
-   - Rolling 1-hour volatility → captures volatility clustering
+   - Closing price over time - shows trends and regime shifts
+   - Log return distribution - identifies heavy tails and extreme returns
+   - Volume distribution (log scale) - highlights skewness and spikes
+   - Rolling 1-hour volatility - captures volatility clustering
 4. **Feature Engineering**
    - **Log returns:** `log(Close / Open)` stabilizes variance
    - **Rolling volatility:** 1-hour rolling std captures market risk
