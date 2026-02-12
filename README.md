@@ -70,4 +70,4 @@ Each algorithmic decision is explicitly justified in the notebook.
 
 ## Author
 
-Shivani S.
+Shivani Suresh
