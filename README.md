@@ -1,73 +1,77 @@
-# Bitcoin OHLCV – Exploratory Data Analysis
+# Bitcoin OHLCV Data Mining & Forecasting
 
-## Overview
+## Project Overview
+This project analyzes high-frequency Bitcoin price and volume data to uncover temporal patterns, volatility clusters, and potential anomalies. The ultimate goal is to prepare the dataset for predictive modeling using both course and beyond-course techniques.
 
-This project performs Exploratory Data Analysis (EDA) on 1-minute BTC/USD OHLCV data to understand structural characteristics, distributional properties, and volatility behavior prior to predictive modeling.
-
-The analysis focuses on statistical validation and financial reasoning behind each transformation.
+**Scope:**
+- Exploratory Data Analysis (EDA)
+- Feature Engineering: log returns, rolling volatility
+- Anomaly detection
+- Future work: LSTM/Transformer-based forecasting
 
 ---
 
 ## Dataset
-
-- Source: Kaggle – Bitcoin Historical Data (https://www.kaggle.com/datasets/mczielinski/bitcoin-historical-data)
-- Frequency: 1-minute intervals  
-- Features: Timestamp, Open, High, Low, Close, Volume  
-
----
-
-## Objectives
-
-- Validate data integrity
-- Analyze long-term price trends
-- Transform prices into log returns
-- Examine return distribution properties
-- Analyze volume skewness
-- Estimate rolling volatility
-- Identify volatility clustering behavior
+- **Source:** [Kaggle – Bitcoin Historical Data](https://www.kaggle.com/datasets/swaptr/bitcoin-historical-data)  
+- **Size:** ~7.4 million rows (1-minute intervals)  
+- **Columns:** `Timestamp, Open, High, Low, Close, Volume`  
+- **Licensing:** Public dataset for academic use  
+- **Notes:** No missing values; highly skewed price and volume distributions
 
 ---
 
-## Key Analysis Steps
+## Progress / Current Work
 
-1. Data cleaning and validation  
-2. Timestamp conversion to datetime  
-3. Price trend visualization  
-4. Log return computation  
-5. Distribution analysis (heavy tails)  
-6. Volume distribution analysis (log-scale)  
-7. 60-minute rolling volatility estimation  
+### Exploratory Data Analysis
+1. **Data Inspection**
+   - Verified dataset size and data types
+   - Confirmed no missing values
+2. **Timestamp Conversion**
+   - Converted Unix seconds → datetime for proper time-series handling
+3. **Visualizations**
+   - Closing price over time → shows trends and regime shifts
+   - Log return distribution → identifies heavy tails and extreme returns
+   - Volume distribution (log scale) → highlights skewness and spikes
+   - Rolling 1-hour volatility → captures volatility clustering
+4. **Feature Engineering**
+   - **Log returns:** `log(Close / Open)` stabilizes variance
+   - **Rolling volatility:** 1-hour rolling std captures market risk
 
-Each algorithmic decision is explicitly justified in the notebook.
+### Key Insights
+- Most price changes are small in 1-minute intervals; rare extreme outliers exist  
+- Volume spikes coincide with large price moves → potential anomaly signals  
+- High-frequency noise suggests smoothing / rolling-window features for modeling  
 
----
+### Planned Next Steps
+- Implement LSTM/Transformer models for short-term forecasting  
+- Apply anomaly detection on log returns and volume spikes  
+- Evaluate impact of rolling window size on volatility and prediction  
+- Explore technical indicators (RSI, MACD) for improved forecasting
 
-## Key Findings
+## Collaboration Declaration
 
-- BTC price series is non-stationary.
-- Log returns exhibit heavy tails.
-- Volume distribution is highly skewed.
-- Clear evidence of volatility clustering.
-- Gaussian assumptions are inappropriate.
+On my honor, I declare the following resources:
 
----
+1. **Collaborators:**
+- None
 
-## Tools Used
+2. **Web Sources:**
+- https://pandas.pydata.org/docs/  
+- https://numpy.org/doc/  
+- https://matplotlib.org/stable/  
+- https://www.kaggle.com/datasets/mczielinski/bitcoin-historical-data  
 
-- pandas
-- numpy
-- matplotlib
+3. **AI Tools:**
+- ChatGPT – Used for structural refinement, documentation formatting, and domain-specific information.
 
----
+4. **Citations (Papers Referenced Conceptually):**
+- Mandelbrot, B. (1963). *The Variation of Certain Speculative Prices.* Journal of Business.  
+  *Justifies the observation that log returns exhibit heavy tails and deviate from Gaussian assumptions due to frequent extreme price movements.*
 
-## References
+- Engle, R. (1982). *Autoregressive Conditional Heteroskedasticity with Estimates of the Variance of UK Inflation.* Econometrica.  
+  *Supports the identification of volatility clustering and time-varying variance in financial return series.*
 
-- Mandelbrot (1963) – Heavy-tailed financial returns  
-- Engle (1982) – ARCH model  
-- Bollerslev (1986) – GARCH model  
+- Bollerslev, T. (1986). *Generalized Autoregressive Conditional Heteroskedasticity.* Journal of Econometrics.  
+  *Motivates the use of rolling volatility and GARCH-type models to capture persistent conditional heteroskedasticity in returns.*
 
----
 
-## Author
-
-Shivani Suresh
