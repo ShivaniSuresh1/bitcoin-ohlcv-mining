@@ -6,8 +6,7 @@ This project analyzes high-frequency Bitcoin price and volume data to uncover te
 **Scope:**
 - Exploratory Data Analysis (EDA)
 - Feature Engineering: log returns, rolling volatility
-- Anomaly detection
-- Future work: LSTM/Transformer-based forecasting
+- Future work: LSTM/Transformer-based forecasting/Anomaly detection
 
 ---
 
